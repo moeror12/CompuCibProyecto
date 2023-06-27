@@ -1,0 +1,93 @@
+﻿@model ProyectoCompuCibVista.Models.Usuario
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/PRUEBA.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Registrar Nuevo Cliente</h3>
+                        <p>Complete los campos</p>
+                        <form asp-action="Create" class="requires-validation" novalidate>
+                            <div hidden class="col-md-12">
+                                <input asp-for="UsuarioId" class="form-control" type="text" placeholder="Full Name" required>
+                                <div class="valid-feedback">Username field is valid!</div>
+                                <div class="invalid-feedback">Username field cannot be blank!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <input asp-for="CodigoUsuario" class="form-control" placeholder="Codigo Usuario" />
+                                <span asp-validation-for="CodigoUsuario" class="text-danger"></span>
+                                <div class="valid-feedback">Username field is valid!</div>
+                                <div class="invalid-feedback">Username field cannot be blank!</div>
+                            </div>
+
+                            <div class="col-md-12">
+                                @*<label asp-for="Nombre" class="control-label"></label>*@
+                                <input asp-for="Nombre" class="form-control" type="text" placeholder="Nombres" required>
+                                <span asp-validation-for="Nombre" class="text-danger"></span>
+                                <div class="valid-feedback">Email field is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <input asp-for="Apellido" class="form-control" type="text" placeholder="Apellidos" required>
+                                <span asp-validation-for="Apellido" class="text-danger"></span>
+                                <div class="valid-feedback">Email field is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <input asp-for="Correo" class="form-control" type="text" placeholder="Correo" required>
+                                <span asp-validation-for="Correo" class="text-danger"></span>
+                                <div class="valid-feedback">Email field is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <input asp-for="Direccion" class="form-control" type="text" placeholder="Dirección" required>
+                                <span asp-validation-for="Direccion" class="text-danger"></span>
+                                <div class="valid-feedback">Email field is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <input asp-for="Telefono" class="form-control" type="text" placeholder="Telefono" required>
+                                <span asp-validation-for="Telefono" class="text-danger"></span>
+                                <div class="valid-feedback">Email field is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <input asp-for="Password" class="form-control" type="text" placeholder="Password" required>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                                <div class="valid-feedback">Email field is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <label class="mb-3 mr-1" for="gender">Categoria: </label>
+
+                                <input asp-for="TipoUsuarioId" value="1" type="radio" class="btn-check" id="male" autocomplete="off" required>
+                                <label class="btn btn-sm btn-outline-secondary" for="male">Administrador</label>
+
+                                <input asp-for="TipoUsuarioId" value="2" type="radio" class="btn-check" id="female" autocomplete="off" required>
+                                <label class="btn btn-sm btn-outline-secondary" for="female">Empleado</label>
+
+                            </div>
+                            <div class="form-button mt-3">
+                                @*<button id="submit" type="submit" value="Create" class="btn btn-primary">Register</button>*@
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                                <a asp-action="ListarEmpleado" id="submit" class="btn btn-primary">Atras</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+}

@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+@model ProyectoCompuCibVista.Models.AdminDto
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProyectoCompuCibVista</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/MiEstilo.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProyectoCompuCibVista.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+<div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <img src="~/fotos/logo.jpg" style="width: 250px; margin-left:100px; margin-bottom:20px" />
+                    <h3 style="margin-left:130px">Login Usuario</h3>
+                    <p style="margin-left:125px">Ingrese sus credenciales</p>
+                    <form asp-action="Login">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-md-12">
+                            <input asp-for="CodigoUsuario" class="form-control" type="text" placeholder="Codigo de Usuario" required>
+                            <span asp-validation-for="CodigoUsuario" class="text-danger"></span>
+                            <div class="valid-feedback">Username field is valid!</div>
+                            <div class="invalid-feedback">Username field cannot be blank!</div>
+                        </div>
+                        <div class="col-md-12">
+                            <input asp-for="Password" class="form-control" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <div class="valid-feedback">Username field is valid!</div>
+                            <div class="invalid-feedback">Username field cannot be blank!</div>
+                        </div>
+
+                                    <div class="form-button mt-3">
+                            @*<button id="submit" type="submit" value="Create" class="btn btn-primary">Register</button>*@
+                            <input type="submit" value="Ingresar" class="btn btn-primary" />
+                        </div>
+                        @if (ViewBag.mensaje != "1")
+                        {
+                            <div style="background-color:red; color: white; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                <center>
+                                    <p>@ViewBag.mensaje</p>
+                                </center>
+                            </div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+</div>
+</body>
+</html>

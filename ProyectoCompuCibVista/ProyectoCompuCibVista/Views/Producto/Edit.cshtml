@@ -1,0 +1,157 @@
+﻿@model ProyectoCompuCibVista.Models.Producto
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/PRUEBA.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Modificar Producto</h3>
+                    <p>Complete los campos</p>
+                        <form asp-action="Edit" class="requires-validation" novalidate>
+                        <div hidden class="col-md-12">
+                            <input asp-for="ProductoId" class="form-control" type="text" placeholder="Full Name" required>
+                            <div class="valid-feedback">Username field is valid!</div>
+                            <div class="invalid-feedback">Username field cannot be blank!</div>
+                        </div>
+                        <div class="col-md-12">
+                            <input asp-for="Nombre" class="form-control" placeholder="Nombre Producto" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                            <div class="valid-feedback">Username field is valid!</div>
+                            <div class="invalid-feedback">Username field cannot be blank!</div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label asp-for="Precio" class="control-label"></label>
+                            <input asp-for="Precio" class="form-control" type="number" placeholder="Precio" required>
+                                <span asp-validation-for="Precio" class="text-danger"></span>
+                            <div class="valid-feedback">Email field is valid!</div>
+                            <div class="invalid-feedback">Email field cannot be blank!</div>
+                        </div>
+                        <div hidden class="col-md-12">
+                            <input asp-for="FechaCreacion" class="form-control" type="text"  placeholder="E-mail Address" required>
+                                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+                            <div class="valid-feedback">Email field is valid!</div>
+                            <div class="invalid-feedback">Email field cannot be blank!</div>
+                        </div>
+                        <div class="col-md-12">
+                            <input asp-for="Foto" class="form-control" type="text"  placeholder="Url Foto" required>
+                                <span asp-validation-for="Foto" class="text-danger"></span>
+                            <div class="valid-feedback">Email field is valid!</div>
+                            <div class="invalid-feedback">Email field cannot be blank!</div>
+                        </div>
+                            <div class="col-md-12">
+                                <input asp-for="Descripcion" class="form-control" type="text" placeholder="Descripcion" required>
+                                <span asp-validation-for="Descripcion" class="text-danger"></span>
+                                <div class="valid-feedback">Email field is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                            </div>
+                        <div class="col-md-12 mt-3">
+                            <label class="mb-3 mr-1" for="gender">Categoria: </label>
+
+                            <input asp-for="CategoriaId" value="1" type="radio" class="btn-check"  id="male" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="male">Laptop</label>
+
+                            <input asp-for="CategoriaId" value="2" type="radio" class="btn-check"  id="female" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="female">Pc</label>
+
+                            <input asp-for="CategoriaId" value="3" type="radio" class="btn-check"  id="secret" autocomplete="off" required>
+                            <label class="btn btn-sm btn-outline-secondary" for="secret">Mac</label>
+                            <div class="valid-feedback mv-up">You selected a gender!</div>
+                            <div class="invalid-feedback mv-up">Please select a gender!</div>
+                        </div>
+                        <div hidden class="col-md-12">
+                            <input asp-for="Categoria" value="default" class="form-control" type="text"  placeholder="E-mail Address" required>
+                            <div class="valid-feedback">Email field is valid!</div>
+                            <div class="invalid-feedback">Email field cannot be blank!</div>
+                        </div>
+                        <div  class="col-md-12">
+                            <label asp-for="Stock" class="control-label"></label>
+                            <input asp-for="Stock" class="form-control" type="number" placeholder="Stock" required>
+                                <span asp-validation-for="Stock" class="text-danger"></span>
+                            <div class="valid-feedback">Email field is valid!</div>
+                            <div class="invalid-feedback">Email field cannot be blank!</div>
+                        </div>
+ 
+
+
+                        <div class="form-button mt-3">
+                            @*<button id="submit" type="submit" value="Create" class="btn btn-primary">Register</button>*@
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                            <a asp-action="Index" id="submit" class="btn btn-primary">Atras</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<h4>Producto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div hidden class="form-group">
+                <label asp-for="ProductoId" class="control-label"></label>
+                <input asp-for="ProductoId" class="form-control" />
+                <span asp-validation-for="ProductoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+                <div hidden class="form-group">
+                <label asp-for="FechaCreacion" class="control-label"></label>
+                <input asp-for="FechaCreacion" class="form-control" />
+                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label"></label>
+                <input asp-for="Foto" class="form-control" />
+                <span asp-validation-for="Foto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoriaId" class="control-label"></label>
+                <input asp-for="CategoriaId" class="form-control" />
+                <span asp-validation-for="CategoriaId" class="text-danger"></span>
+            </div>
+                <div hidden class="form-group">
+                <label asp-for="Categoria" class="control-label"></label>
+                <input asp-for="Categoria" class="form-control" />
+                <span asp-validation-for="Categoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+}

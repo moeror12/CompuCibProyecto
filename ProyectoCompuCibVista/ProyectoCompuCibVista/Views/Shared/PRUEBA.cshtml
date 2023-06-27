@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>@ViewData["Title"] - ProyectoCompuCibVista</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/estiloprueba.css" asp-append-version="true" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/MiEstilo.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProyectoCompuCibVista.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    </head>
+    <body>
+
+    <!--Main Navigation-->
+<header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+        <div class="position-sticky">
+            <div class="list-group list-group-flush mx-3 mt-4">
+                    <a class="list-group-item list-group-item-action py-2 ripple" aria-current="true" class="nav-link text-light" asp-area="" asp-controller="Venta" asp-action="ListarVenta">
+                        <i class="fas fa-shopping-cart fa-fw me-3"></i><span>Ventas</span>
+                </a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" aria-current="true" asp-area="" asp-controller="Contacto" asp-action="ListarContactos">
+                    <i class="fas fa-chart-area fa-fw me-3"></i><span>Contacto</span>
+                </a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" aria-current="true" asp-area="" asp-controller="Producto" asp-action="ProductosxCat">
+                    <i class="fas fa-lock fa-fw me-3"></i><span>Productos</span>
+                </a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" aria-current="true" asp-area="" asp-controller="Cliente" asp-action="Index">
+                    <i class="fas fa-chart-line fa-fw me-3"></i><span>Clientes</span>
+                </a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" aria-current="true" asp-area="" asp-controller="Reclamo" asp-action="ReclamosxCorreo">
+                    <i class="fas fa-chart-pie fa-fw me-3"></i><span>Reclamos</span>
+                </a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" aria-current="true" asp-area="" asp-controller="Usuario" asp-action="ListarEmpleado">
+                    <i class="fas fa-users fa-fw me-3"></i><span>Empleados</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Sidebar -->
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+                    <img src="~/fotos/logo.jpg" height="25" alt="CompuCib"
+                     loading="lazy" />
+            </a>
+            <!-- Search form -->
+                <form class="d-none d-md-flex input-group w-auto my-auto" action="/Producto/ProductosxNom" method="post">
+                    <input autocomplete="off" type="search" id="nom" name="nom" value="" class="form-control rounded" style="min-width: 225px;" />
+                    <button class="input-group-text border-0"><i class="fas fa-search"></i></button>
+                </form>
+                @*<form method="get" action="/Reclamo/ListaReclamosN">*@
+            <!-- Right links -->
+            <ul class="navbar-nav ms-auto d-flex flex-row">
+                <!-- Notification dropdown -->
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle hidden-arrow" id="navbarDropdownMenuLink"
+                      role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bell"></i>
+                            <span class="badge rounded-pill badge-notification bg-danger"><span id="volume_data"></span></span>
+                    </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item" href="/Reclamo/ReclamosxCorreo">Reclamos</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Nuevos Reclamos</a>
+                        </li>
+                    </ul>
+                </li>
+                @*</form>*@
+
+                <!-- Icon dropdown --
+                    class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                <!-- Avatar -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" 
+                       id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="rounded-circle"
+                             height="22" alt="Avatar" loading="lazy" />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item" href="">Mi Perfil</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Opciones</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/Seguridad/Login">Salir</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+</header>
+<!--Main Navigation-->
+<!--Main layout-->
+<main style="margin-top: 58px;">
+    <div class="container pt-4"></div>
+</main>
+<!--Main layout-->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script>
+        window.watsonAssistantChatOptions = {
+            integrationID: "143c2b25-8599-4f2a-a129-494b9b430f1c", // The ID of this integration.
+            region: "us-south", // The region your integration is hosted in.
+            serviceInstanceID: "c0db494b-4942-44b7-b65d-852554e23949", // The ID of your service instance.
+            onLoad: function (instance) { instance.render(); }
+        };
+        setTimeout(function () {
+            const t = document.createElement('script');
+            t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+            document.head.appendChild(t);
+        });
+    </script>
+    <script>
+        function getData() {
+            $.getJSON("http://www.tienditacompucib.somee.com/api/Reclamo/numeroReclamos", function (d) {
+                $('#volume_data').text(d.numerosReclamos);
+            });
+        }
+        getData(); // first call
+        setInterval(getData, 3000);
+        </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+
